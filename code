@@ -1,0 +1,108 @@
+package name;
+import javax.swing.JOptionPane;
+public class name
+{
+
+	public static void main(String[] args) 
+	{
+		name_list name=new name_list();
+	
+		name.name_read();
+		name.print();
+		name.mi();
+		name.print();
+		System.exit(0);
+	}
+}
+class name_list
+	{
+	 char[] letter=new char[30];
+		
+	int count=-1,i;
+	String more="y";
+	int postion1,postion2;
+	int selection;
+	
+	void name_read() 
+	{
+		String con;
+
+		int i;
+		String more="y";
+		
+		String output="Please Enter A Letter ";
+		con=JOptionPane.showInputDialog(null,
+                 output, "",JOptionPane.QUESTION_MESSAGE);
+		while(!con.equals("*"))
+		{
+			count=count+1;
+			letter[count] = con.charAt(0);
+			con=JOptionPane.showInputDialog(null,
+	                 output, "",JOptionPane.QUESTION_MESSAGE);
+			
+			//output="Do you want to countinue? ";
+			//more=JOptionPane.showInputDialog(null,
+	        //         output, "",JOptionPane.QUESTION_MESSAGE);
+			
+		}
+		
+	}
+		
+	void mi()
+	{
+	String more="y";	
+		char v=' ';
+		int dash = 0;
+				
+					String  output="Please Enter your Middle Intinal";
+					String  con=JOptionPane.showInputDialog(null,
+			                 output, "",JOptionPane.QUESTION_MESSAGE);
+					v=con.charAt(0);
+				System.out.println(v);
+					more=con;
+				
+					//Search for the dash (save that position)
+					for(i=0;i<=count;++i)
+					{
+					 if(letter[i]=='-')dash=i;
+						 
+					}
+					//shift everything down by two places
+					char temp;
+					for(int i=letter.length-1;i>dash;i--)
+					{
+						letter[i]=letter[i-2];
+					}
+						
+					//from the position of the dash+1 to count
+					//put the middle initial into position dash +1
+					letter[dash+1]=v;
+					//put another dash into position dash+2
+					letter[dash+2]='-';
+					//add 2 to the count
+					count=count+2;
+	
+			
+		
+	}
+	
+	 void print()
+	{
+
+		int i;
+		
+		String printv="",printv2;
+		for(i=0;i<=count;++i)
+		{
+		printv=printv+letter[i];
+		}
+		  JOptionPane.showMessageDialog(null,
+			        printv,"Output:",JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+}//end of name_list class
+
+
+
+
+
